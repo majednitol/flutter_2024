@@ -21,33 +21,25 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Card and gridview'),
+          title: const Text('Expanded'),
         ),
-        body: GridView.count(
-          crossAxisCount: 2,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 20,
-          children: const [
-            Card(
-              elevation: 10,
-              child: Center(child: Text("data")),
-            ),
-            Card(
-              elevation: 10,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(100))),
-              child: Center(child: Text("data")),
-            ),
-            Card(
-              elevation: 10,
-              child: Center(child: Text("data")),
-            ),
-            Card(
-              elevation: 10,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(100))),
-              child: Center(child: Text("data")),
-            ),
+        body: Column(
+          children: [
+            Expanded(
+                flex: 2,
+                child: Container(
+                  color: Colors.red,
+                )),
+            Expanded(
+                flex: 1,
+                child: Container(
+                  color: Colors.green,
+                )),
+            Expanded(
+                flex: 1,
+                child: Container(
+                  color: Colors.purple,
+                ))
           ],
         ));
   }
