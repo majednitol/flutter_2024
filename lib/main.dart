@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_2024/mywidget.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 
 void main() {
@@ -19,9 +20,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final pages = [
-    Container(
-      color: Colors.greenAccent,
-    ),
+    const Mywidget(),
     Container(
       color: Colors.red,
     ),
