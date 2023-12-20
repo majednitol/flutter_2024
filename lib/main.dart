@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:liquid_swipe/liquid_swipe.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -18,35 +17,38 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final pages = [
-    Container(
-      color: Colors.greenAccent,
-    ),
-    Container(
-      color: Colors.red,
-    ),
-    Container(
-      color: Colors.blue,
-    ),
-    Container(
-      color: Colors.indigo,
-    ),
-    Container(
-      color: Colors.orange,
-    ),
-    Container(
-      color: Colors.cyan,
-    ),
-    Container(
-      color: Colors.amber,
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('liquidSwipe'),
+          title: const Text('Card and gridview'),
         ),
-        body: LiquidSwipe(pages: pages));
+        body: GridView.count(
+          crossAxisCount: 2,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 20,
+          children: const [
+            Card(
+              elevation: 10,
+              child: Center(child: Text("data")),
+            ),
+            Card(
+              elevation: 10,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(100))),
+              child: Center(child: Text("data")),
+            ),
+            Card(
+              elevation: 10,
+              child: Center(child: Text("data")),
+            ),
+            Card(
+              elevation: 10,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(100))),
+              child: Center(child: Text("data")),
+            ),
+          ],
+        ));
   }
 }
