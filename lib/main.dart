@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('PageView'),
+          title: const Text('Card and GrirdView'),
         ),
         body: GridView.count(
           crossAxisCount: 2,
