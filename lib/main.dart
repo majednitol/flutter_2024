@@ -20,16 +20,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('PageView'),
-        ),
-        body: PageView(
-          controller: _pageController,
-          children: const [Page1(), Page2(), Page3()],
-        ));
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+          appBar: AppBar(
+            title: const Text('TabBar'),
+            bottom: const TabBar(tabs: [
+              Tab(
+                icon: Icon(Icons.home),
+              ),
+              Tab(
+                icon: Icon(Icons.notification_add),
+              ),
+              Tab(icon: Icon(Icons.menu))
+            ]),
+          ),
+          body: const TabBarView(
+            children: [Page1(), Page2(), Page3()],
+          )),
+    );
   }
 }
