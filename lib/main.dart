@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:liquid_swipe/liquid_swipe.dart';
+import 'package:flutter_2024/Pages/page1.dart';
+import 'package:flutter_2024/Pages/page2.dart';
+import 'package:flutter_2024/Pages/page3.dart';
+
 
 void main() {
   runApp(MaterialApp(
@@ -18,36 +21,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final PageController _pageController =PageController()
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text('PageView'),
         ),
-        body: GridView.count(
-          crossAxisCount: 2,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 20,
-          children: const [
-            Card(
-              elevation: 10,
-              child: Center(child: Text("data")),
-            ),
-            Card(
-              elevation: 10,
-              child: Center(child: Text("data")),
-            ),
-            Card(
-              elevation: 10,
-              child: Center(child: Text("data")),
-            ),
-            Card(
-              elevation: 10,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              child: Center(child: Text("data")),
-            ),
-          ],
+        body: PageView(
+          controller:_pageController ,
+          children: const [Page1(), Page2(), Page3()],
         ));
   }
 }
