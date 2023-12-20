@@ -3,7 +3,6 @@ import 'package:flutter_2024/Pages/page1.dart';
 import 'package:flutter_2024/Pages/page2.dart';
 import 'package:flutter_2024/Pages/page3.dart';
 
-
 void main() {
   runApp(MaterialApp(
     title: "Flutter",
@@ -21,7 +20,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final PageController _pageController =PageController()
+  final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           title: const Text('PageView'),
         ),
         body: PageView(
-          controller:_pageController ,
+          controller: _pageController,
           children: const [Page1(), Page2(), Page3()],
         ));
   }
