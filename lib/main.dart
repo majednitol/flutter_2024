@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:liquid_swipe/liquid_swipe.dart';
 
 void main() {
   runApp(MaterialApp(
     title: "Flutter",
     home: const HomeScreen(),
-    theme: ThemeData(primarySwatch: Colors.amber),
+    debugShowCheckedModeBanner: false,
+    theme: ThemeData(primarySwatch: Colors.purple),
   ));
 }
 
@@ -16,30 +18,35 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final pages = [
+    Container(
+      color: Colors.greenAccent,
+    ),
+    Container(
+      color: Colors.red,
+    ),
+    Container(
+      color: Colors.blue,
+    ),
+    Container(
+      color: Colors.indigo,
+    ),
+    Container(
+      color: Colors.orange,
+    ),
+    Container(
+      color: Colors.cyan,
+    ),
+    Container(
+      color: Colors.amber,
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Stack and positioned'),
-      ),
-      body: Stack(  // it like z-index
-        
-        children: [
-          Container(height: 300, width: 300, color: Colors.red),
-          Container(height: 200, width: 300, color: Colors.blue),
-          Container(height: 100, width: 300, color: Colors.purple),
-          Positioned(
-            top: 30,
-            left: 20,
-            child: Container(
-              height: 50,
-              width: 100,
-              color: Colors.green,
-              child: const Center(child: Text("Positioned")),
-            ),
-          )
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('liquidSwipe'),
+        ),
+        body: LiquidSwipe(pages: pages));
   }
 }
