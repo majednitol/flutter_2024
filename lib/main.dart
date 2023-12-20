@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_2024/Pages/page1.dart';
-import 'package:flutter_2024/Pages/page2.dart';
-import 'package:flutter_2024/Pages/page3.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -20,16 +18,28 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('PageView'),
+          title: const Text('HERO ANIMATION'),
         ),
-        body: PageView(
-          controller: _pageController,
-          children: const [Page1(), Page2(), Page3()],
+        body: Center(
+          child: CircleAvatar(
+            radius: 50,
+            child: GestureDetector(
+              child: const Hero(
+                  tag: 'show',
+                  child: Icon(
+                    Icons.add,
+                    size: 50,
+                  )),
+              onTap: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Page1()))
+              },
+            ),
+          ),
         ));
   }
 }
