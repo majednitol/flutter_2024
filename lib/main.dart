@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_2024/Pages/page1.dart';
+import 'package:flutter_2024/Pages/page2.dart';
+import 'package:flutter_2024/Pages/page3.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -18,28 +20,36 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var _currentIndex = 0;
+  final pages = [
+    const Page1(),
+    const Page2(),
+    const Page3(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('HERO ANIMATION'),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: "Home",
+                backgroundColor: Colors.green),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.menu),
+                label: "menu",
+                backgroundColor: Colors.green),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.notification_add),
+                label: "menu",
+                backgroundColor: Colors.green)
+          ],
+          currentIndex: _currentIndex,
+          onTap: (index) => {setState(() => _currentIndex = index)},
         ),
-        body: Center(
-          child: CircleAvatar(
-            radius: 50,
-            child: GestureDetector(
-              child: const Hero(
-                  tag: 'show',
-                  child: Icon(
-                    Icons.add,
-                    size: 50,
-                  )),
-              onTap: () => {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Page1()))
-              },
-            ),
-          ),
-        ));
+        appBar: AppBar(
+          title: const Text('BottomNavigationBar'),
+        ),
+        body: Center(child: pages[_currentIndex]));
   }
 }
