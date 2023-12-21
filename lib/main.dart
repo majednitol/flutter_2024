@@ -20,24 +20,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('textField')),
-        body: const Padding(
-          padding: EdgeInsets.all(32.0),
-          child: TextField(
-            keyboardType: TextInputType.number,
-            // maxLines: 5,
-            // obscuringCharacter: "&&",
-            decoration: InputDecoration(
-                hintText: "018",
-                labelStyle: TextStyle(fontSize: 20),
-                border: OutlineInputBorder(),
-                prefix: Text("+880"),
-                suffix: Text("99"),
-                prefixIcon: Icon(Icons.phone),
-                suffixIcon: Icon(Icons.phone),
-                labelText: "Enter your phone"),
-            obscureText: true,
-          ),
-        ));
+        appBar: AppBar(title: const Text('SnackBar')),
+        body: Center(
+            child: ElevatedButton(
+                onPressed: () {
+                  final snackBar = SnackBar(
+                    content: const Text("Yay! A SnackBar!"),
+                    action: SnackBarAction(label: "undo", onPressed: () {}),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
+                child: const Text("SnackBar"))));
   }
 }
