@@ -20,39 +20,19 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: CustomScrollView(
-      slivers: [
-        const SliverAppBar(
-          backgroundColor: Colors.amber,
-          expandedHeight: 150,
-          flexibleSpace: FlexibleSpaceBar(
-            title: Text("sliver app bar, list , grid"),
-            centerTitle: true,
+        appBar: AppBar(
+          title: const Text('Gradient color in appBar and body'),
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.red, Colors.green, Colors.blue])),
           ),
-          pinned: true,
         ),
-        SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
-          return Container(
-            alignment: Alignment.center,
-            height: 50,
-            color: Colors.amber[100 * (index % 9)],
-            child: Text("Amber $index"),
-          );
-        }, childCount: 20)),
-        SliverGrid(
-            delegate: SliverChildBuilderDelegate((context, index) {
-              return Container(
-                height: 200,
-                width: 200,
-                color: Colors.amber[100 * (index % 9)],
-                alignment: Alignment.center,
-                child: Text("Amber $index"),
-              );
-            }),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, crossAxisSpacing: 20, mainAxisSpacing: 20))
-      ],
-    ));
+        body: Container(
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Colors.red, Colors.green, Colors.purple]))));
   }
 }
