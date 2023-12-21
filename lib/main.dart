@@ -20,16 +20,36 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('SnackBar')),
-        body: Center(
-            child: ElevatedButton(
-                onPressed: () {
-                  final snackBar = SnackBar(
-                    content: const Text("Yay! A SnackBar!"),
-                    action: SnackBarAction(label: "undo", onPressed: () {}),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                },
-                child: const Text("SnackBar"))));
+        appBar: AppBar(title: const Text('ListTile')),
+        body: const Column(
+          children: [
+            ListTile(
+              title: Text("Email"),
+              subtitle: Text("@gmail.com"),
+              leading: Icon(Icons.email),
+              trailing: Icon(Icons.send),
+            ),
+            ListTile(
+              title: Text("Phone"),
+              subtitle: Text("Enter your phone number"),
+              leading: Icon(Icons.phone),
+              trailing: Icon(Icons.send),
+            ),
+            ListTile(
+              title: Text("Email"),
+              subtitle: Text("@gmail.com"),
+              leading: CircleAvatar(
+                child: Icon(Icons.account_circle),
+              ),
+              trailing: Icon(Icons.send),
+            ),
+            ListTile(
+              title: Text("Email"),
+              subtitle: Text("@gmail.com"),
+              leading: Icon(Icons.email),
+              trailing: Icon(Icons.send),
+            ),
+          ],
+        ));
   }
 }
