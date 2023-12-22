@@ -23,18 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: AppBar(title: const Text('Toast')),
         body: Center(
-          child: ElevatedButton(
-              onPressed: (() {
-                // TODO:
-                Fluttertoast.showToast(
-                    msg: "This is a toast",
-                    toastLength: Toast.LENGTH_SHORT,
-                    backgroundColor: Colors.green,
-                    gravity: ToastGravity.BOTTOM,
-                    textColor: Colors.white,
-                    timeInSecForIosWeb: 1);
-              }),
-              child: const Text("Click")),
+          
         ));
   }
 }
