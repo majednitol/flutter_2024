@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -20,36 +21,20 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('ListTile')),
-        body: const Column(
-          children: [
-            ListTile(
-              title: Text("Email"),
-              subtitle: Text("@gmail.com"),
-              leading: Icon(Icons.email),
-              trailing: Icon(Icons.send),
-            ),
-            ListTile(
-              title: Text("Phone"),
-              subtitle: Text("Enter your phone number"),
-              leading: Icon(Icons.phone),
-              trailing: Icon(Icons.send),
-            ),
-            ListTile(
-              title: Text("Email"),
-              subtitle: Text("@gmail.com"),
-              leading: CircleAvatar(
-                child: Icon(Icons.account_circle),
-              ),
-              trailing: Icon(Icons.send),
-            ),
-            ListTile(
-              title: Text("Email"),
-              subtitle: Text("@gmail.com"),
-              leading: Icon(Icons.email),
-              trailing: Icon(Icons.send),
-            ),
-          ],
+        appBar: AppBar(title: const Text('Toast')),
+        body: Center(
+          child: ElevatedButton(
+              onPressed: (() {
+                // TODO:
+                Fluttertoast.showToast(
+                    msg: "This is a toast",
+                    toastLength: Toast.LENGTH_SHORT,
+                    backgroundColor: Colors.green,
+                    gravity: ToastGravity.BOTTOM,
+                    textColor: Colors.white,
+                    timeInSecForIosWeb: 1);
+              }),
+              child: const Text("Click")),
         ));
   }
 }
