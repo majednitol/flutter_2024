@@ -25,14 +25,13 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Center(
           child: ElevatedButton(
               onPressed: (() {
-                // TODO:
                 Fluttertoast.showToast(
-                    msg: "This is a toast",
-                    toastLength: Toast.LENGTH_SHORT,
-                    backgroundColor: Colors.green,
-                    gravity: ToastGravity.BOTTOM,
-                    textColor: Colors.white,
-                    timeInSecForIosWeb: 1);
+                  msg: "This is a toast",
+                  toastLength: Toast.LENGTH_SHORT,
+                  backgroundColor: Colors.green,
+                  gravity: ToastGravity.BOTTOM,
+                  textColor: Colors.white,
+                );
               }),
               child: const Text("Click")),
         ));
