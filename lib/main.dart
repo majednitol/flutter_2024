@@ -24,30 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: AppBar(title: const Text('Slider')),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "learn flutter",
-                style: TextStyle(fontSize: currentValue),
-              ),
-              Slider(
-                activeColor: Colors.amber,
-                value: currentValue,
-                min: 10,
-                max: 50,
-                inactiveColor: Colors.red,
-                label: currentValue.toString(),
-                divisions: 5,
-                onChanged: (value) {
-                  setState(() {
-                    currentValue = value;
-                  });
-                },
-              ),
-            ],
-          ),
+          
         ));
   }
 }
