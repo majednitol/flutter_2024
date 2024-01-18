@@ -18,13 +18,35 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var currentValue = 10.0;
+  var currentValue = 'choice one';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Slider')),
+        appBar: AppBar(title: const Text('DropDownButton')),
         body: Center(
-          
+          child: Column(
+            children: [
+              Text(currentValue.toString()),
+              DropdownButton(
+                  items: const [
+                    DropdownMenuItem(
+                      value: 'One',
+                      child: Text('one'),
+                    ),
+                    DropdownMenuItem(
+                      value: 'two',
+                      child: Text('two'),
+                    ),
+                    DropdownMenuItem(
+                      value: 'three',
+                      child: Text('three'),
+                    )
+                  ],
+                  onChanged: (val) => setState(() {
+                        currentValue = val.toString();
+                      }))
+            ],
+          ),
         ));
   }
 }
