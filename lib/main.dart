@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -22,32 +21,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Slider')),
+        appBar: AppBar(title: const Text('Rich text')),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "learn flutter",
-                style: TextStyle(fontSize: currentValue),
-              ),
-              Slider(
-                activeColor: Colors.amber,
-                value: currentValue,
-                min: 10,
-                max: 50,
-                inactiveColor: Colors.red,
-                label: currentValue.toString(),
-                divisions: 5,
-                onChanged: (value) {
-                  setState(() {
-                    currentValue = value;
-                  });
-                },
-              ),
-            ],
-          ),
-        ));
+            child: RichText(
+          text: const TextSpan(
+              text: 'dont you have van account ',
+              style: TextStyle(fontSize: 20, color: Colors.black),
+              children: [
+                TextSpan(
+                    text: 'sign up',
+                    style: TextStyle(fontSize: 20, color: Colors.red))
+              ]),
+        )));
   }
 }
