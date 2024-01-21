@@ -15,11 +15,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final ageController = TextEditingController();
+  var currentValue = 'Select one';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Title'),
+        title: const Text('Login Screen'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -27,6 +28,29 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Text("UserType"),
+                DropdownButton(
+                    value: currentValue,
+                    items: const [
+                      DropdownMenuItem(
+                        value: 'Student',
+                        child: Text('Student'),
+                      ),
+                      DropdownMenuItem(
+                        value: "Teacher",
+                        child: Text('Teacher'),
+                      )
+                    ],
+                    onChanged: (value) {
+                      setState(() {
+                        currentValue = value!;
+                      });
+                    }),
+              ],
+            ),
             TextFormField(
               controller: emailController,
               // keyboardType: TextInputType.emailAddress,
@@ -60,15 +84,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 sp.setString('age', ageController.text.toString());
                 print(sp.getString('age'));
                 sp.setBool('islogin', true);
-                sp.setString('userType', 'Student');
+                sp.setString('userType', currentValue);
                 String? userType = sp.getString('userType');
-                 if (userType == 'Student') {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Student()));
-      } else if (userType == 'Teacher') {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Teacher()));
-      }
+                if (userType == 'Student') {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Student()));
+                } else if (userType == 'Teacher') {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Teacher()));
+                }
               },
               child: Container(
                 alignment: Alignment.center,
