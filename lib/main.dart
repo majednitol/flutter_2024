@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_2024/about_page.dart';
-import 'package:flutter_2024/app_controller.dart';
-import 'package:get/get.dart';
+import 'package:flutter_2024/provider/data_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(GetMaterialApp(
+  runApp(MaterialApp(
     home: const HomePage(),
     theme: ThemeData(primarySwatch: Colors.purple),
     darkTheme: ThemeData.dark(),
@@ -18,58 +17,36 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppController appController = Get.put(AppController());
     return Scaffold(
       appBar: AppBar(
-        title: const Text('GetX'),
+        title: const Text('Provider'),
       ),
-      body: Column(
-        children: [
-          ElevatedButton(
-              onPressed: () {
-                Get.snackbar(
-                    "Downloading completed", "your song has been downloaded");
-              },
-              child: const Text("Snakbar")),
-          ElevatedButton(
-              onPressed: () {
-                Get.defaultDialog(
-                    title: "Notification",
-                    content: const Center(child: Text("Download")));
-              },
-              child: const Text("dialog")),
-          ElevatedButton(
-              onPressed: () {
-                Get.to(const AboutPage());
-              },
-              child: const Text("Go to AboutPage")),
-          const SizedBox(
-            height: 200,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              InkWell(
-                onTap: () => {appController.increment()},
-                child: Container(
-                  child: const Icon(Icons.add),
-                ),
-              ),
-              Obx(() => Container(
-                    child: Text(
-                      appController.n.toString(),
-                      style: const TextStyle(fontSize: 30),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ChangeNotifierProvider<DataProvider>(
+            create: (context) => DataProvider(),
+            child: Consumer<DataProvider>(
+              builder: (context, provider, child) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(provider.eligibilityMessage.toString()),
+                    const SizedBox(
+                      height: 30,
                     ),
-                  )),
-              InkWell(
-                onTap: () => {appController.decrement()},
-                child: Container(
-                  child: const Icon(Icons.remove),
-                ),
-              )
-            ],
-          )
-        ],
+                    TextFormField(
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                          hintText: "Enter your age",
+                          border: OutlineInputBorder()),
+                      onChanged: (val) =>
+                          {provider.checkEligibity(int.parse(val))},
+                    )
+                  ],
+                );
+              },
+            )),
       ),
     );
   }
